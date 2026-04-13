@@ -830,7 +830,7 @@
       transition: transform 0.3s;
       margin-bottom: 2rem;
     }
-    
+
     .gift-container:hover {
       transform: scale(1.05);
     }
@@ -840,17 +840,30 @@
     }
 
     @keyframes shake {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-5deg) scale(1.05); }
-      50% { transform: rotate(5deg) scale(1.05); }
-      75% { transform: rotate(-5deg) scale(1.05); }
+
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(-5deg) scale(1.05);
+      }
+
+      50% {
+        transform: rotate(5deg) scale(1.05);
+      }
+
+      75% {
+        transform: rotate(-5deg) scale(1.05);
+      }
     }
 
     .gift-img {
       width: 150px;
       height: 150px;
       object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(233,30,99,0.3));
+      filter: drop-shadow(0 10px 20px rgba(233, 30, 99, 0.3));
     }
 
     /* ====== TIME COUNTER ====== */
@@ -929,25 +942,36 @@
   <!-- ===================== PAGE 1: Kado Pembuka ===================== -->
   <div class="page active" id="page1">
     <div class="gift-container" id="giftBox" onclick="handleGiftClick()">
-      <img src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>" alt="Gift Box" class="gift-img" id="giftImg">
+      <img
+        src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>"
+        alt="Gift Box" class="gift-img" id="giftImg">
     </div>
     <h1 class="neon-title" id="giftText">klik kado nya 3 kali! 🎁</h1>
     <p>untuk membuka kejutan manis buat ayangg...</p>
-    <button class="button" onclick="goToPage(2)" id="nextBtn1" style="display: none; margin-top:20px;">Lanjut ‹𝟹</button>
+    <button class="button" onclick="goToPage(2)" id="nextBtn1" style="display: none; margin-top:20px;">Lanjut
+      ‹𝟹</button>
   </div>
 
   <!-- ===================== PAGE 2: Time Counter ===================== -->
   <div class="page" id="page2">
     <h2>Waktu Bersama Kita ⏳</h2>
     <p>sejak 25 Mei 2025 sampai hari ini, dan selamanya...</p>
-    
+
     <div class="counter-wrapper">
-      <div class="counter-box"><span id="days">0</span><p>Hari</p></div>
-      <div class="counter-box"><span id="hours">0</span><p>Jam</p></div>
-      <div class="counter-box"><span id="minutes">0</span><p>Menit</p></div>
-      <div class="counter-box"><span id="seconds">0</span><p>Detik</p></div>
+      <div class="counter-box"><span id="days">0</span>
+        <p>Hari</p>
+      </div>
+      <div class="counter-box"><span id="hours">0</span>
+        <p>Jam</p>
+      </div>
+      <div class="counter-box"><span id="minutes">0</span>
+        <p>Menit</p>
+      </div>
+      <div class="counter-box"><span id="seconds">0</span>
+        <p>Detik</p>
+      </div>
     </div>
-    
+
     <button class="button" onclick="goToPage(3)">lanjut lagii ‹𝟹</button>
   </div>
 
@@ -999,7 +1023,7 @@
       <img src="image2.jpeg" alt="Cute Love">
       <div class="photo-caption">favoritku 🌸</div>
     </div>
-    <h1>setiap tahun, ayangg tumbuh lebih bijak, lebih baik, dan makin luar biasa. selamat ulang tahun, cintaku ♡</h1>
+    <h1>setiap tahun, tasa tumbuh lebih bijak, lebih baik, dan makin luar biasa. selamat ulang tahun, cintakuuuuu ♡</h1>
     <p>cuma ayangg, yang bisa buat refan jatuh cinta sedalam ini 💗</p>
     <button class="button" onclick="goToPage(9)">♡</button>
   </div>
@@ -1293,7 +1317,7 @@ from: ur boyfriend`;
     function handleGiftClick() {
       const box = document.getElementById('giftBox');
       const text = document.getElementById('giftText');
-      
+
       // Start music on first gift click
       if (!musicPlaying) {
         const music = document.getElementById("bg-music");
@@ -1315,7 +1339,7 @@ from: ur boyfriend`;
         text.innerText = 'yeeayyyyy! 🎉';
         document.getElementById('giftImg').src = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>';
         document.getElementById('nextBtn1').style.display = 'inline-block';
-        
+
         confetti({
           particleCount: 150,
           spread: 80,
@@ -1328,8 +1352,8 @@ from: ur boyfriend`;
     // ===================== TIME COUNTER LOGIC =====================
     function initCounter() {
       // Month is 0-indexed in Date() — May is 4. Result is 25 May 2025
-      const startDate = new Date(2025, 4, 25, 0, 0, 0); 
-      
+      const startDate = new Date(2025, 4, 25, 0, 0, 0);
+
       setInterval(() => {
         const now = new Date();
         // Since the date is in the future relative to current time, diff will be negative
