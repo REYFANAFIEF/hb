@@ -822,6 +822,74 @@
         transform: translateY(110vh) rotate(360deg) scale(0.8);
       }
     }
+
+    /* ====== GIFT BOX ====== */
+    .gift-container {
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.3s;
+      margin-bottom: 2rem;
+    }
+    
+    .gift-container:hover {
+      transform: scale(1.05);
+    }
+
+    .gift-shake {
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg) scale(1.05); }
+      50% { transform: rotate(5deg) scale(1.05); }
+      75% { transform: rotate(-5deg) scale(1.05); }
+    }
+
+    .gift-img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(233,30,99,0.3));
+    }
+
+    /* ====== TIME COUNTER ====== */
+    .counter-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .counter-box {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(233, 30, 99, 0.2);
+      border-radius: 15px;
+      padding: 15px 10px;
+      min-width: 75px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+    }
+
+    .counter-box span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e91e63;
+      margin-bottom: 5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .counter-box p {
+      font-size: 0.75rem;
+      margin: 0;
+      color: #ad1457;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 
@@ -851,77 +919,104 @@
     <div class="dot"></div>
     <div class="dot"></div>
     <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
   </div>
 
   <!-- ===================== MUSIC TOGGLE ===================== -->
   <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵</button>
 
-  <!-- ===================== PAGE 1: Halaman Pembuka ===================== -->
+  <!-- ===================== PAGE 1: Kado Pembuka ===================== -->
   <div class="page active" id="page1">
+    <div class="gift-container" id="giftBox" onclick="handleGiftClick()">
+      <img src="https://media1.tenor.com/m/7Pj6j_n2P3sAAAAC/kado.gif" alt="Gift Box" class="gift-img" id="giftImg">
+    </div>
+    <h1 class="neon-title" id="giftText">klik kado nya 3 kali! 🎁</h1>
+    <p>untuk membuka kejutan manis buat ayangg...</p>
+    <button class="button" onclick="goToPage(2)" id="nextBtn1" style="display: none; margin-top:20px;">Lanjut ‹𝟹</button>
+  </div>
+
+  <!-- ===================== PAGE 2: Time Counter ===================== -->
+  <div class="page" id="page2">
+    <h2>Waktu Bersama Kita ⏳</h2>
+    <p>sejak 25 Mei 2025 sampai hari ini, dan selamanya...</p>
+    
+    <div class="counter-wrapper">
+      <div class="counter-box"><span id="days">0</span><p>Hari</p></div>
+      <div class="counter-box"><span id="hours">0</span><p>Jam</p></div>
+      <div class="counter-box"><span id="minutes">0</span><p>Menit</p></div>
+      <div class="counter-box"><span id="seconds">0</span><p>Detik</p></div>
+    </div>
+    
+    <button class="button" onclick="goToPage(3)">lanjut lagii ‹𝟹</button>
+  </div>
+
+  <!-- ===================== PAGE 3: Halaman Pembuka ===================== -->
+  <div class="page" id="page3">
     <img src="https://media1.tenor.com/m/X6PE6qtJRKwAAAAC/happy-birthday-birthday-cat.gif" alt="Birthday Cat">
     <h1 class="neon-title">selamat ulang tahun <span class="highlight">sayangku!!</span></h1>
     <p>ada sesuatu yang menunggumu… klik untuk lihat ✨</p>
-    <button class="button" onclick="goToPage(2)">buka ‹𝟹</button>
-  </div>
-
-  <!-- ===================== PAGE 2 ===================== -->
-  <div class="page" id="page2">
-    <img src="https://media1.tenor.com/m/0U87-j5_O8sAAAAC/loveletter-love.gif" alt="Love Letter">
-    <p>setiap tahun, ayangg makin luar biasa.
-      selamat ulang tahun, sayanggggg.</p>
-    <button class="button" onclick="goToPage(3)">buka ini ‹𝟹</button>
-  </div>
-
-  <!-- ===================== PAGE 3 ===================== -->
-  <div class="page" id="page3">
-    <img src="https://media1.tenor.com/m/Z7eD3FqHOOcAAAAC/heart-hearts.gif" alt="Floating Hearts">
-    <p>ayaangggku canntiikk ayanggkuuu hebatt 💗.</p>
-    <button class="button" onclick="goToPage(4)"> Klik agii ‹𝟹</button>
+    <button class="button" onclick="goToPage(4)">buka ‹𝟹</button>
   </div>
 
   <!-- ===================== PAGE 4 ===================== -->
   <div class="page" id="page4">
+    <img src="https://media1.tenor.com/m/0U87-j5_O8sAAAAC/loveletter-love.gif" alt="Love Letter">
+    <p>setiap tahun, ayangg makin luar biasa.
+      selamat ulang tahun, sayanggggg.</p>
+    <button class="button" onclick="goToPage(5)">buka ini ‹𝟹</button>
+  </div>
+
+  <!-- ===================== PAGE 5 ===================== -->
+  <div class="page" id="page5">
+    <img src="https://media1.tenor.com/m/Z7eD3FqHOOcAAAAC/heart-hearts.gif" alt="Floating Hearts">
+    <p>ayaangggku canntiikk ayanggkuuu hebatt 💗.</p>
+    <button class="button" onclick="goToPage(6)"> Klik agii ‹𝟹</button>
+  </div>
+
+  <!-- ===================== PAGE 6 ===================== -->
+  <div class="page" id="page6">
     <img src="https://media1.tenor.com/m/DRZ-o5rz6_0AAAAC/happy-birthday-wishes.gif" alt="Birthday Cupcake Bear">
     <p>yang terakhir
       refan bikin sesuatu buat hari spesial ayangg, baca pelan-pelan yaa sayaanggkuuu 🎂</p>
-    <button class="button" onclick="goToPage(5)">okee ‹𝟹</button>
+    <button class="button" onclick="goToPage(7)">okee ‹𝟹</button>
   </div>
 
-  <!-- ===================== PAGE 5: Foto Polaroid 1 ===================== -->
-  <div class="page" id="page5">
+  <!-- ===================== PAGE 7: Foto Polaroid 1 ===================== -->
+  <div class="page" id="page7">
     <div class="photo-frame">
       <img src="image1.jpeg" alt="Cute Love">
       <div class="photo-caption">kita 💗</div>
     </div>
     <h1>tasa layak mendapat semua cinta di dunia ini, hari ini dan selamanya. selamat ulang tahun, sayangkuuuuu 💗</h1>
     <p></p>
-    <button class="button" onclick="goToPage(6)">buka ini (♡˙ᵕ˙♡)</button>
+    <button class="button" onclick="goToPage(8)">buka ini (♡˙ᵕ˙♡)</button>
   </div>
 
-  <!-- ===================== PAGE 6: Foto Polaroid 2 ===================== -->
-  <div class="page" id="page6">
+  <!-- ===================== PAGE 8: Foto Polaroid 2 ===================== -->
+  <div class="page" id="page8">
     <div class="photo-frame">
       <img src="image2.jpeg" alt="Cute Love">
       <div class="photo-caption">favoritku 🌸</div>
     </div>
     <h1>setiap tahun, ayangg tumbuh lebih bijak, lebih baik, dan makin luar biasa. selamat ulang tahun, cintaku ♡</h1>
     <p>cuma ayangg, yang bisa buat refan jatuh cinta sedalam ini 💗</p>
-    <button class="button" onclick="goToPage(7)">♡</button>
+    <button class="button" onclick="goToPage(9)">♡</button>
   </div>
 
-  <!-- ===================== PAGE 7: Foto Polaroid 3 ===================== -->
-  <div class="page" id="page7">
+  <!-- ===================== PAGE 9: Foto Polaroid 3 ===================== -->
+  <div class="page" id="page9">
     <div class="photo-frame">
-      <img src="image.jpeg" alt="Cute Love">
+      <img src="image.png" alt="Cute Love">
       <div class="photo-caption">selamanya ✨</div>
     </div>
     <h1>hari ini dan seterusnya, refan makin sayangg sama tasa 💗.</h1>
     <p>scroll ke bawah, refan ninggalin surat kecil buat ayangg 🎂</p>
-    <button class="button" onclick="goToPage(8)">♡</button>
+    <button class="button" onclick="goToPage(10)">♡</button>
   </div>
 
-  <!-- ===================== PAGE 8: Surat ===================== -->
-  <div class="page scroll-page" id="page8">
+  <!-- ===================== PAGE 10: Surat ===================== -->
+  <div class="page scroll-page" id="page10">
     <div class="letter-hearts" id="letterHearts"></div>
     <h2>selamat ulang tahun sayangkuu-!! ૮꒰ྀི ੭˶ᵔ ᵕ ᵔ ྀི꒱੭</h2>
     <div class="letter-container">
@@ -1193,16 +1288,13 @@ from: ur boyfriend`;
       });
     }
 
-    // ===================== NAVIGASI HALAMAN =====================
-    function goToPage(pageNum) {
-      currentPage = pageNum;
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(p => { p.classList.remove('active'); });
-      const next = document.getElementById(`page${pageNum}`);
-      next.classList.add('active');
-      updatePageCounter(pageNum);
-
-      // Start music on first click
+    // ===================== GIFT CLICK LOGIC =====================
+    let giftClicks = 0;
+    function handleGiftClick() {
+      const box = document.getElementById('giftBox');
+      const text = document.getElementById('giftText');
+      
+      // Start music on first gift click
       if (!musicPlaying) {
         const music = document.getElementById("bg-music");
         music.volume = 0.35;
@@ -1212,7 +1304,70 @@ from: ur boyfriend`;
         }).catch(e => console.log("Autoplay blocked:", e));
       }
 
-      if (pageNum === 8) {
+      giftClicks++;
+      box.classList.remove('gift-shake');
+      void box.offsetWidth; // trigger reflow
+      box.classList.add('gift-shake');
+
+      if (giftClicks === 1) text.innerText = 'lagi dua kali! 🎁';
+      else if (giftClicks === 2) text.innerText = 'sekali lagiii! 🎁';
+      else if (giftClicks >= 3) {
+        text.innerText = 'yeeayyyyy! 🎉';
+        document.getElementById('giftImg').src = 'https://media1.tenor.com/m/S6d55Lq0hbwAAAAC/love-hearts.gif';
+        document.getElementById('nextBtn1').style.display = 'inline-block';
+        
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#e91e63', '#f06292', '#f48fb1', '#fce4ec', '#ff80ab']
+        });
+      }
+    }
+
+    // ===================== TIME COUNTER LOGIC =====================
+    function initCounter() {
+      // Month is 0-indexed in Date() — May is 4. Result is 25 May 2025
+      const startDate = new Date(2025, 4, 25, 0, 0, 0); 
+      
+      setInterval(() => {
+        const now = new Date();
+        // Since the date is in the future relative to current time, diff will be negative
+        let diff = Math.abs(now - startDate);
+
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / 1000 / 60) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').innerText = d;
+        document.getElementById('hours').innerText = h;
+        document.getElementById('minutes').innerText = m;
+        document.getElementById('seconds').innerText = s;
+      }, 1000);
+    }
+    initCounter();
+
+    // ===================== NAVIGASI HALAMAN =====================
+    function goToPage(pageNum) {
+      currentPage = pageNum;
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => { p.classList.remove('active'); });
+      const next = document.getElementById(`page${pageNum}`);
+      next.classList.add('active');
+      updatePageCounter(pageNum);
+
+      // Start music on first click if not playing
+      if (!musicPlaying) {
+        const music = document.getElementById("bg-music");
+        music.volume = 0.35;
+        music.play().then(() => {
+          musicPlaying = true;
+          document.getElementById('musicToggle').classList.add('playing');
+        }).catch(e => console.log("Autoplay blocked:", e));
+      }
+
+      if (pageNum === 10) {
         // Epic confetti burst from both sides
         const duration = 4000;
         const end = Date.now() + duration;
